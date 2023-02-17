@@ -1,13 +1,16 @@
-﻿from tkinter import *
+﻿# Import from different libraries
+from tkinter import *
 from random import *
 
 #ALN INTERVIEW TO IANCECIL
-################################################################## VARIABLES ##############################################################################
-
-(color)=['red','blue','yellow','white','orange','green']
 
 
-# colors
+# VARIABLES 
+(couleur)=['red','blue','yellow','white','orange','green']
+
+# cr is short for solved cube.
+
+# Definition of colors
 red='red'
 orange='orange'
 white='white'
@@ -20,7 +23,9 @@ CC=[]  # Cube in progress (unsolved)
 cm1=[] # Cube after move 1
 
 
+
 # Graphic part:
+
 ag= int(input(' Enter 0 for display 2D or 1 for display 3D '))
 
 a = 800
@@ -38,6 +43,7 @@ fond.pack(side=LEFT)
 ##################################################################### FUNCTIONS ############################################################################
 
 # Cube function solved
+
 def CubeResolue() :
     global cr,red,orange,white,green,yellow,blue,CC
     cr=[[[red,red,red],[red,red,red],[red,red,red]],
@@ -128,12 +134,14 @@ def AfficheGraphique ():
 
 
 # Function allowing the display of the Rubik's Cube in 3D
+
 def AfficheGraphique3D ():
     
     c = 2*x
     d = 2*y
     
 # Creation of faces with abbreviations F for face and C for square:
+
     F1C1=fond.create_polygon(c+4.32*x ,  d+2*y ,     c+2.66*x ,  d+2.66*y , c+1*x ,    d+2*y ,    c+2.66*x ,    d+1.34*y  ,outline='black' ,  fill=CC [0] [0] [0])
     F1C2=fond.create_polygon(c+5.98*x ,  d+2.66*y ,  c+4.32*x ,  d+3.33*y , c+2.66*x , d+2.66*y , c+4.32*x ,    d+2*y     ,outline='black' ,  fill=CC [0] [0] [1])
     F1C3=fond.create_polygon(c+7.66*x ,  d+3.34*y ,  c+6*x ,     d+4*y ,    c+4.32*x , d+3.33*y , c+5.98*x ,    d+2.66*y  ,outline='black' ,  fill=CC [0] [0] [2])
@@ -208,14 +216,16 @@ def AfficheGraphique3D ():
     
 # Functions defining movements.
 
-def Opt_Display () :
+
+def Opt_Affichage () :
 
     if ag == 0 :
         AfficheGraphique ()
     elif ag == 1 :
         AfficheGraphique3D ()
 
-# This function performs a forward move of the first column.def Mvt1():
+# This function performs a forward movement of the first column.
+def Mvt1():
     global CC,cm1
     cm1=[[[CC[3][0][0],CC[3][0][1],CC[3][0][2]],[CC[0][1][0],CC[0][1][1],CC[0][1][2]],[CC[0][2][0],CC[0][2][1],CC[0][2][2]]], 
          [[CC[5][2][2],CC[5][2][1],CC[5][2][0]],[CC[1][1][0],CC[1][1][1],CC[1][1][2]],[CC[1][2][0],CC[1][2][1],CC[1][2][2]]],
@@ -226,10 +236,10 @@ def Opt_Display () :
 
     CC=cm1
 
-    Opt_Display ()
+    Opt_Affichage ()
     
 
-# This function performs a backward move of the first column.
+# This function performs a backward movement of the first column.
 def Mvt2():
     global CC,cm2
     
@@ -241,7 +251,7 @@ def Mvt2():
          [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[1][0][0],CC[1][0][1],CC[1][0][2]]]]
     CC=cm2
 
-    Opt_Display ()
+    Opt_Affichage ()
         
 # Mvt3 corresponds to the forward movement of the 2nd column.
 def Mvt3():
@@ -254,9 +264,10 @@ def Mvt3():
          [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[0][1][2],CC[0][1][1],CC[0][1][0]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm3
 
-    Opt_Display ()
+    Opt_Affichage ()
         
 # Mvt4 corresponds to the backward movement of the 2nd column.
+
 def Mvt4():
     global CC,cm4
 
@@ -268,10 +279,10 @@ def Mvt4():
          [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[1][1][0],CC[1][1][1],CC[1][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm4
 
-    Opt_Display ()
+    Opt_Affichage ()
         
 
-# Mvt5 corresponds to the backward movement of the 3rd column.
+# Mvt5 corresponds to the forward movement of the 3rd column.
 def Mvt5 ():
     global CC ,cm5
     cm5=[[[CC[0][0][0],CC[0][0][1],CC[0][0][2]],[CC[0][1][0],CC[0][1][1],CC[0][1][2]],[CC[3][2][0],CC[3][2][1],CC[3][2][2]]],
@@ -282,7 +293,7 @@ def Mvt5 ():
          [[CC[0][2][2],CC[0][2][1],CC[0][2][0]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm5
 
-    Opt_Display ()
+    Opt_Affichage ()
         
 
 # Mvt6 corresponds to the backward movement of the 3rd column.
@@ -296,9 +307,9 @@ def Mvt6():
         [[CC[1][2][2],CC[1][2][1],CC[1][2][0]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
    CC=cm6
 
-   Opt_Display ()
+   Opt_Affichage ()
     
-# Mvt7 corresponds to the backward movement of the 1st column.
+# Mvt7 corresponds to the movement to the left of the 1st line.
 def Mvt7():
     global CC ,cm7
     cm7=[[[CC[0][0][2],CC[0][1][2],CC[0][2][2]],[CC[0][0][1],CC[0][1][1],CC[0][2][1]],[CC[0][0][0],CC[0][1][0],CC[0][2][0]]],
@@ -309,9 +320,10 @@ def Mvt7():
          [[CC[2][0][0],CC[5][0][1],CC[5][0][2]],[CC[2][1][0],CC[5][1][1],CC[5][1][2]],[CC[2][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm7
 
-    Opt_Display ()
+    Opt_Affichage ()
 
 
+# Mvt8 corresponds to the movement to the right of the 1st line.
 def Mvt8():
     global CC ,cm8
     cm8=[[[CC[0][2][0],CC[0][1][0],CC[0][0][0]],[CC[0][2][1],CC[0][1][1],CC[0][0][1]],[CC[0][2][2],CC[0][1][2],CC[0][0][2]]],
@@ -322,9 +334,10 @@ def Mvt8():
          [[CC[4][0][0],CC[5][0][1],CC[5][0][2]],[CC[4][1][0],CC[5][1][1],CC[5][1][2]],[CC[4][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm8
 
-    Opt_Display ()
+    Opt_Affichage ()
         
 
+ # Mvt9 corresponds to the movement to the left of the 2nd line.
 def Mvt9():
     global CC ,cm9
     cm9=[[[CC[0][0][0],CC[0][0][1],CC[0][0][2]],[CC[0][1][0],CC[0][1][1],CC[0][1][2]],[CC[0][2][0],CC[0][2][1],CC[0][2][2]]],
@@ -335,9 +348,10 @@ def Mvt9():
          [[CC[5][0][0],CC[2][0][1],CC[5][0][2]],[CC[5][1][0],CC[2][1][1],CC[5][1][2]],[CC[5][2][0],CC[2][2][1],CC[5][2][2]]]]
     CC=cm9
 
-    Opt_Display ()
+    Opt_Affichage ()
         
 
+# Mvt 10 corresponds to the movement to the right of the 2nd line.
 def Mvt10():
     global CC ,cm10
     cm10=[[[CC[0][0][0],CC[0][0][1],CC[0][0][2]],[CC[0][1][0],CC[0][1][1],CC[0][1][2]],[CC[0][2][0],CC[0][2][1],CC[0][2][2]]],
@@ -348,9 +362,10 @@ def Mvt10():
           [[CC[5][0][0],CC[4][0][1],CC[5][0][2]],[CC[5][1][0],CC[4][1][1],CC[5][1][2]],[CC[5][2][0],CC[4][2][1],CC[5][2][2]]]]
     CC=cm10
 
-    Opt_Display ()
+    Opt_Affichage ()
     
 
+# Mvt 11 corresponds to the movement to the left of the 3rd line.
 def Mvt11():
     global CC ,cm11
     cm11=[[[CC[0][0][0],CC[0][0][1],CC[0][0][2]],[CC[0][1][0],CC[0][1][1],CC[0][1][2]],[CC[0][2][0],CC[0][2][1],CC[0][2][2]]],
@@ -361,10 +376,10 @@ def Mvt11():
           [[CC[5][0][0],CC[5][0][1],CC[2][0][2]],[CC[5][1][0],CC[5][1][1],CC[2][1][2]],[CC[5][2][0],CC[5][2][1],CC[2][2][2]]]]
     CC=cm11
 
-    Opt_Display ()
+    Opt_Affichage ()
       
 
-# Mvt 12 correspond au mouvement vers la droite de la 3ème ligne.
+# Mvt 12 corresponds to the movement to the right of the 3rd line.
 def Mvt12():
     global CC ,cm12
     cm12=[[[CC[0][0][0],CC[0][0][1],CC[0][0][2]],[CC[0][1][0],CC[0][1][1],CC[0][1][2]],[CC[0][2][0],CC[0][2][1],CC[0][2][2]]],
@@ -375,7 +390,7 @@ def Mvt12():
           [[CC[5][0][0],CC[5][0][1],CC[4][0][2]],[CC[5][1][0],CC[5][1][1],CC[4][1][2]],[CC[5][2][0],CC[5][2][1],CC[4][2][2]]]]
     CC=cm12
 
-    Opt_Display ()
+    Opt_Affichage ()
      
 
 def Mvt13():
@@ -388,7 +403,7 @@ def Mvt13():
           [[CC[5][0][2],CC[5][1][2],CC[5][2][2]],[CC[5][0][1],CC[5][1][1],CC[5][2][1]],[CC[5][0][0],CC[5][1][0],CC[5][2][0]]]]
     CC=cm13
 
-    Opt_Display ()     
+    Opt_Affichage ()     
         
 def Mvt14():
     global CC,cm14
@@ -400,7 +415,7 @@ def Mvt14():
           [[CC[5][2][0],CC[5][1][0],CC[5][0][0]],[CC[5][2][1],CC[5][1][1],CC[5][0][1]],[CC[5][2][2],CC[5][1][2],CC[5][0][2]]]]
     CC=cm14
 
-    Opt_Display ()
+    Opt_Affichage ()
   
         
 def Mvt15():
@@ -413,7 +428,7 @@ def Mvt15():
           [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm15
 
-    Opt_Display ()    
+    Opt_Affichage ()    
         
 
 def Mvt16():
@@ -426,7 +441,7 @@ def Mvt16():
           [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm16
 
-    Opt_Display ()
+    Opt_Affichage ()
     
 
 def Mvt17():
@@ -439,7 +454,7 @@ def Mvt17():
           [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm17
 
-    Opt_Display ()
+    Opt_Affichage ()
 
 
 def Mvt18():
@@ -452,12 +467,13 @@ def Mvt18():
           [[CC[5][0][0],CC[5][0][1],CC[5][0][2]],[CC[5][1][0],CC[5][1][1],CC[5][1][2]],[CC[5][2][0],CC[5][2][1],CC[5][2][2]]]]
     CC=cm18
 
-    Opt_Display ()
+    Opt_Affichage ()
     
 
-#buttons 
+#BUTTONS 
 
-# Creation of buttons allowing movements.
+# Creation of movement buttons.
+
 def Boutons():
      
     Bmvt1 = Button(fenetre, text="Mvt1", bg= 'red' , font= "Helvetica 12 bold" , command=Mvt1 , image = photo)
@@ -572,18 +588,19 @@ def Boutons_3D():
     Bmvt18_fenetre = fond.create_window(23.25*x , 108, window=Bmvt18) 
 
         
-# Definition of arrows.photo = PhotoImage(file='arrow1.png')
+# Definition of arrows.
+photo = PhotoImage(file='arrow1.png')
 photo1 = PhotoImage(file='arrowdroite.png')
 photo2 = PhotoImage(file='arrowbas.png')
 photo3 = PhotoImage(file='arrowgauche.png')
 
 
-# Creation of the button used to close the window.
+# Definition of the buttons.
 fermer = Button(fenetre, text="Exit", bg='SlateGray1' , bd= 10 , activebackground ='red',command=fenetre.destroy)
 fermer_fenetre = fond.create_window(40, 20, window=fermer)
 
-# Creation of the button used to reset the cube.
-phrase = Label(fond, text="Rubik's cube", fg='black' , bg ='#E4E4E4' , font= "Helvetica 36 bold")
+# Text in the middle of the window
+phrase = Label(fond, text="ALN IAN'S Rubik's cube", fg='black' , bg ='#E4E4E4' , font= "Helvetica 36 bold")
 phrase.pack()
 fond.create_window(700, 590, window=phrase)
 
@@ -591,7 +608,7 @@ fond.create_window(700, 590, window=phrase)
 
 ######################################################################### MAIN #############################################################################
 
-# Choosing 0 gives the 2D graphics window, choosing 1 gives the 3D graphics window.
+# YOU CAN CHOOSE BETWEEN 2D AND 3D
 if ag == 0 :
         AfficheGraphique (),Boutons()
 elif ag == 1 :
